@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Image Upload and Download</title>
+<link rel="stylesheet" href="{{ url_for('static', filename = 'processing.css') }}"">
+</head>
+<body>
+  <div class="container">
+    <h1>Image Upload and Download</h1>
+    
+    <!-- Form for Image Upload -->
+    <form id="uploadForm" enctype="multipart/form-data">
+      <input type="file" id="fileInput" name="fileInput" accept="image/*">
+      <button type="submit">Upload Image</button>
+    </form>
+    
+    <!-- Placeholder for Uploaded Image -->
+    <div id="uploadedImage">
+      <h2>Uploaded Image:</h2>
+      <img id="imageDisplay" src="#" alt="Uploaded Image">
+      <a id="downloadLink" download="uploaded_image.jpg"><button>Download Image</button></a>
+    </div>
+  </div>
+
+ 
+  <!-- JavaScript for handling image upload and display -->
+  <!-- <script>
+    document.getElementById('uploadForm').addEventListener('submit', function(event) {
+      event.preventDefault();
+      
+      let fileInput = document.getElementById('fileInput');
+      let imageDisplay = document.getElementById('imageDisplay');
+      let downloadLink = document.getElementById('downloadLink');
+      
+      if (fileInput.files.length > 0) {
+        let file = fileInput.files[0];
+        let reader = new FileReader();
+        
+        reader.onload = function(e) {
+          imageDisplay.src = e.target.result;
+          downloadLink.href = e.target.result;
+        };
+        
+        reader.readAsDataURL(file);
+      }
+    });
+  </script> -->
+  <form id="uploadForm" enctype="multipart/form-data" action="/php/upload.php" method="POST"></form>
+
+  <!-- Placeholder for download Image -->
+  <div id="downloadImage">
+    <h2>Processed Image:</h2>
+    <img id="imageDisplay" src="#" alt="Processed Image">
+    <a id="downloadLink" download="processed_image.tif"><button>Download Image</button></a>
+  </div>
+</div>
+
+
+</body>
+</html>
